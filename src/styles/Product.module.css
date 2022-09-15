@@ -1,0 +1,47 @@
+.container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 375px;
+}
+
+.image {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+}
+
+.image > img {
+    width: 100%;
+}
+
+.description {
+    padding: 1.5em;
+    text-align: left;
+}
+
+.description > h3 {
+    color: #FF7E1B;
+    text-transform: uppercase;
+    letter-spacing: 0.11rem;
+    font-size: 0.75rem;
+}
+
+.description > h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1D2026;
+}
+
+.description > p {
+    color: #69707D;
+    font-size: 0.9375rem;
+    line-height: 1.5625rem;
+}
+
+.price {
+    padding: 1.5em;
+    display: flex;
+}
