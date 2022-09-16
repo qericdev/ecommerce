@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  overflow-y: hidden;
+  padding-bottom: 4.5em;
 }
 
 

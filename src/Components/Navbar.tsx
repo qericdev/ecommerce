@@ -4,6 +4,7 @@ import styles from './../styles/Navbar.module.css';
 function Navbar() : JSX.Element {
 
     const [menuOn, setMenuOn] = useState<boolean>(false);
+    const [showCart, setShowCart] = useState<boolean>(false);
     const [loadCounter, setLoadCounter] = useState<number>(0);
 
     function turnMenuOnOff() : void {
@@ -11,11 +12,15 @@ function Navbar() : JSX.Element {
         setLoadCounter(prevLoadCounter => prevLoadCounter + 1);
     }
 
+    function turnShowCartOnOff() : void {
+        setShowCart(prevShowCart => !prevShowCart);
+    }
+
     return (
         <div className={styles.container}>
             <img onClick={turnMenuOnOff} className={styles.menu} alt="menu" src="./../../images/navbar/icon-menu.svg"/>
             <img className={styles.logo} alt="logo" src="./../../images/navbar/logo.svg"/>
-            <img className={styles.cart} alt="cart" src="./../../images/navbar/icon-cart.svg" />
+            <img onClick={turnShowCartOnOff} className={styles.cart} alt="cart" src="./../../images/navbar/icon-cart.svg" />
             <img className={styles.avatar} alt="avatar" src="./../../images/navbar/image-avatar.png"/>
             <nav className={menuOn ? styles.menuOn : loadCounter > 0 ? styles.menuOff : styles.menuFirstLoad}>
                 <div className={styles.options}>
@@ -31,6 +36,14 @@ function Navbar() : JSX.Element {
                 <div className={styles.darkFilter}>
                 </div>
             </nav>
+            <div className={showCart ? styles.cartOptions : styles.cartOptionsOff}>
+                <div>
+                    <h3>Cart</h3>
+                </div>
+                <div>
+                    <p>Your cart is empty.</p>
+                </div>
+            </div>
         </div>
     );
 }
