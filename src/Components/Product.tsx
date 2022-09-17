@@ -1,12 +1,21 @@
 import styles from './../styles/Product.module.css';
 import {useState} from 'react';
 
-function Product() : JSX.Element {
+interface Iprops {
+    data: (quantity : number, name : string, price : number, discount : number) => void;
+}
+
+function Product({data} : Iprops) : JSX.Element {
 
     const [quantity, setQuantity] = useState<number>(0);
+    const [name, setName] = useState<string>("Fall Limited Edition Sneakers");
     const [price, setPrice] = useState<number>(250);
     const [discount, setDiscount] = useState<number>(0.5);
     const [image, setImage] = useState<number>(1);
+
+    function buyItem() : void {
+        data(quantity, name, price, discount);
+    }
 
     function increment() : void {
         setQuantity(prevQuantity => prevQuantity + 1);
@@ -75,7 +84,7 @@ function Product() : JSX.Element {
             </div>
             <div className={styles.description}>
                 <h3>Sneaker Company</h3>
-                <h1>Fall Limited Edition Sneakers</h1>
+                <h1>{name}</h1>
                 <p>These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they&apos;ll withstand everything the weather can offer.</p>
             </div>
             <div className={styles.price}>
@@ -89,7 +98,7 @@ function Product() : JSX.Element {
                 <img onClick={increment} alt="plus" src="./../../images/product/icon-plus.svg"/>
             </div>
             <div className={styles.button}>
-                <button><img alt="cart" src="./../../images/product/icon-cart.png"/>Add to cart</button>
+                <button onClick={buyItem}><img alt="cart" src="./../../images/product/icon-cart.png"/>Add to cart</button>
             </div>
         </div>
     );
