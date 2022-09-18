@@ -267,7 +267,7 @@
     }
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 760px) {
     .container {
         box-sizing: border-box;
         justify-content: center;
@@ -277,6 +277,10 @@
         height: 7rem;
         max-width: 1440px;
         border-bottom: 0.5px solid #E4E9F2;
+    }
+
+    .logo {
+        margin-right: 2rem;
     }
 
     .menu {
@@ -297,8 +301,9 @@
     .list > li {
         font-size: 0.9375rem;
         color: #69707D;
+        font-size: 0.8rem;
         font-weight: 400;
-        width: 4rem;
+        width: 3rem;
         height: 100%;
         display: flex;
         justify-content: center;
@@ -315,16 +320,39 @@
     }
 
     .cart {
+        margin-left: 2.88rem;
         margin-right: 2.88rem;
     }
 
     .cartOptions {
         top: 6rem;
-        left: 81%;
+        left: 75%;
     }
 
     .avatar {
         width: 50px;
         height: 50px;
     }
+}
+
+@media (min-width: 1050px) {
+    
+    .logo {
+        margin-right: 5.6rem;
+    }
+
+    .list > li {
+        font-size: 0.9375rem;
+        width: 4rem;
+    }
+
+    .cart {
+        margin-left: auto;
+        margin-right: 2.88rem;
+    }
+
+    .cartOptions {
+        left: 81%;
+    }
+
 }

@@ -12,6 +12,7 @@ function Product({data} : Iprops) : JSX.Element {
     const [price, setPrice] = useState<number>(250);
     const [discount, setDiscount] = useState<number>(0.5);
     const [image, setImage] = useState<number>(1);
+    const [imageDesktop, setImageDesktop] = useState<number>(1);
 
     function buyItem() : void {
         data(quantity, name, price, discount);
@@ -66,6 +67,10 @@ function Product({data} : Iprops) : JSX.Element {
         }
     }
 
+    function changeImageDesktop(imgNumber : number) : void {
+        setImageDesktop(imgNumber);
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.image}>
@@ -73,32 +78,43 @@ function Product({data} : Iprops) : JSX.Element {
                     <img alt="previous" src="./../../images/product/icon-previous.svg"/>
                 </div>
                 <div className={styles.images}>
-                    <img data-attr={image} alt="sneakers-1" src="./../../images/product/image-product-1.jpg"/>
+                    <img data-attr={image} alt="sneakers-1" src={`./../../images/product/image-product-${imageDesktop}.jpg`}/>
                     <img data-attr={image} alt="sneakers-2" src="./../../images/product/image-product-2.jpg"/>
                     <img data-attr={image} alt="sneakers-3" src="./../../images/product/image-product-3.jpg"/>
                     <img data-attr={image} alt="sneakers-4" src="./../../images/product/image-product-4.jpg"/>
+                </div>
+                <div className={styles.thumbnails}>
+                    <div onClick={() => changeImageDesktop(1)} className={imageDesktop === 1 ? styles.thumbnailSelected1 : styles.thumbnailUnselected1}></div>
+                    <div onClick={() => changeImageDesktop(2)} className={imageDesktop === 2 ? styles.thumbnailSelected2 : styles.thumbnailUnselected2}></div>
+                    <div onClick={() => changeImageDesktop(3)} className={imageDesktop === 3 ? styles.thumbnailSelected3 : styles.thumbnailUnselected3}></div>
+                    <div onClick={() => changeImageDesktop(4)} className={imageDesktop === 4 ? styles.thumbnailSelected4 : styles.thumbnailUnselected4}></div>
                 </div>
                 <div onClick={nextImage} className={styles.next}>
                     <img alt="next" src="./../../images/product/icon-next.svg"/>
                 </div>
             </div>
-            <div className={styles.description}>
-                <h3>Sneaker Company</h3>
-                <h1>{name}</h1>
-                <p>These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they&apos;ll withstand everything the weather can offer.</p>
-            </div>
-            <div className={styles.price}>
-                <p>${(price * discount).toFixed(2)}</p>
-                <p>{discount * 100}%</p>
-                <p>${price.toFixed(2)}</p>
-            </div>
-            <div className={styles.quantity}>
-                <img onClick={decrement} alt="minus" src="./../../images/product/icon-minus.svg" />
-                <p>{quantity}</p>
-                <img onClick={increment} alt="plus" src="./../../images/product/icon-plus.svg"/>
-            </div>
-            <div className={styles.button}>
-                <button onClick={buyItem}><img alt="cart" src="./../../images/product/icon-cart.png"/>Add to cart</button>
+            <div className={styles.mainDescription}>
+                <div className={styles.description}>
+                    <h3>Sneaker Company</h3>
+                    <h1>{name}</h1>
+                    <p>These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they&apos;ll withstand everything the weather can offer.</p>
+                </div>
+                <div className={styles.price}>
+                    <p>${(price * discount).toFixed(2)}</p>
+                    <p>{discount * 100}%</p>
+                    <p>${price.toFixed(2)}</p>
+                </div>
+                <div className={styles.quantityAndBuyButton}>
+                    <div className={styles.quantity}>
+                        <img onClick={decrement} alt="minus" src="./../../images/product/icon-minus.svg" />
+                        <p>{quantity}</p>
+                        <img onClick={increment} alt="plus" src="./../../images/product/icon-plus.svg"/>
+                    </div>
+                    <div className={styles.button}>
+                        <button onClick={buyItem}><img alt="cart" src="./../../images/product/icon-cart.png"/>Add to cart</button>
+                    </div>
+                </div>
+                
             </div>
         </div>
     );
