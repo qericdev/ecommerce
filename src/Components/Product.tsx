@@ -3,9 +3,10 @@ import {useState} from 'react';
 
 interface Iprops {
     data: (quantity : number, name : string, price : number, discount : number) => void;
+    activeModal : (isModalActive : boolean) => void;
 }
 
-function Product({data} : Iprops) : JSX.Element {
+function Product({data, activeModal} : Iprops) : JSX.Element {
 
     const [quantity, setQuantity] = useState<number>(0);
     const [name, setName] = useState<string>("Fall Limited Edition Sneakers");
@@ -71,6 +72,10 @@ function Product({data} : Iprops) : JSX.Element {
         setImageDesktop(imgNumber);
     }
 
+    function setActiveModal() : void {
+        activeModal(true);
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.image}>
@@ -78,7 +83,7 @@ function Product({data} : Iprops) : JSX.Element {
                     <img alt="previous" src="./../../images/product/icon-previous.svg"/>
                 </div>
                 <div className={styles.images}>
-                    <img data-attr={image} alt="sneakers-1" src={`./../../images/product/image-product-${imageDesktop}.jpg`}/>
+                    <img onClick={setActiveModal} data-attr={image} alt="sneakers-1" src={`./../../images/product/image-product-${imageDesktop}.jpg`}/>
                     <img data-attr={image} alt="sneakers-2" src="./../../images/product/image-product-2.jpg"/>
                     <img data-attr={image} alt="sneakers-3" src="./../../images/product/image-product-3.jpg"/>
                     <img data-attr={image} alt="sneakers-4" src="./../../images/product/image-product-4.jpg"/>
