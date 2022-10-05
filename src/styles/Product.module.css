@@ -319,8 +319,6 @@
         left: 50%;
         transform: translateX(-50%);
     }
-
-
 }
 
 
@@ -346,6 +344,7 @@
         width: 445px;
         border-radius: 15px;
         cursor: url('./../../public/images/pointer.png'), auto; 
+        flex-shrink: 0;
     }
 
     .mainDescription {
