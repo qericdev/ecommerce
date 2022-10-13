@@ -343,8 +343,8 @@
     .images > img {
         width: 445px;
         border-radius: 15px;
-        cursor: url('./../../public/images/pointer.png'), auto; 
-        flex-shrink: 0;
+        cursor: url('./../../public/images/pointer.png'), auto;
+        -webkit-flex-shrink : 0; 
     }
 
     .mainDescription {
