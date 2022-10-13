@@ -344,6 +344,7 @@
         width: 445px;
         border-radius: 15px;
         cursor: url('./../../public/images/pointer.png'), auto;
+        /* webkit prefix with the property flex shrink is used to make compatible with Mozilla old versions*/
         -webkit-flex-shrink : 0; 
     }
 
